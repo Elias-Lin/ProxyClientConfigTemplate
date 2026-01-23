@@ -1,0 +1,14 @@
+apple
+google
+youtube
+netflix
+microsoft
+github
+disney
+telegram
+netflix
+facebook
+twitter
+openai
+category-ai-!cn
+category-ai-chat-!cn
