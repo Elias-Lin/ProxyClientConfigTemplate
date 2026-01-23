@@ -12,3 +12,4 @@ twitter
 openai
 category-ai-!cn
 category-ai-chat-!cn
+geolocation-!cn
