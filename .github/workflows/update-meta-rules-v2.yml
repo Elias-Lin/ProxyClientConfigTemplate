@@ -1,4 +1,4 @@
-name: Update MetaCubeX Geo Lite Rules (Selected)
+name: Update Domain List From Geo
 
 on:
   workflow_dispatch:
