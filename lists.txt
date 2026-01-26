@@ -3,6 +3,7 @@ google
 youtube
 netflix
 microsoft
+onedrive
 github
 disney
 telegram
@@ -10,6 +11,8 @@ netflix
 facebook
 twitter
 openai
+paypal
+tiktok
 category-ai-!cn
 category-ai-chat-!cn
 geolocation-!cn
