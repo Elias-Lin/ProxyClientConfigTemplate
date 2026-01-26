@@ -3,7 +3,7 @@ name: Update MetaCubeX Geo Lite Rules (Selected)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 3 * * *"
+    - cron: "*/2 * * * *"
 
 jobs:
   update:
