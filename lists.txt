@@ -20,3 +20,6 @@ reddit
 category-ai-!cn
 category-ai-chat-!cn
 geolocation-!cn
+proxymedia
+private
+discord
