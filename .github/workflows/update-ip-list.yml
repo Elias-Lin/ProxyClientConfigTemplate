@@ -1,4 +1,4 @@
-name: Update Domain List From Geo
+name: Update IP List From GeoIP
 
 on:
   workflow_dispatch:
