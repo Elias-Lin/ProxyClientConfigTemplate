@@ -39,7 +39,7 @@ jobs:
             echo "$name" | grep -q '^#' && continue
 
             src="$SOURCE_DIR/$name.list"
-            dst="shadowrocket/$name.list"
+            dst="shadowrocket/domain/$name.list"
 
             if [ ! -f "$src" ]; then
               echo "Skip missing: $name.list"
