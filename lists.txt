@@ -1,3 +1,6 @@
+cn
+apple-cn
+apple@cn
 apple
 google
 youtube
