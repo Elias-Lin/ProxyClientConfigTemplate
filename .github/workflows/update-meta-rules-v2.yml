@@ -3,7 +3,7 @@ name: Update MetaCubeX Geo Lite Rules (Selected)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 19 * * *"   # UTC 03:00 = 北京时间 11:00
+    - cron: "0 19 * * *" 
 
 jobs:
   update:
