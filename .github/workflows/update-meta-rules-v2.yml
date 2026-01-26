@@ -1,12 +1,64 @@
-name: Schedule Test
+name: Update MetaCubeX Geo Lite Rules (Selected)
 
 on:
-  schedule:
-    - cron: "*/1 * * * *"
   workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *"   # UTC 03:00 = 北京时间 11:00
 
 jobs:
-  test:
+  update:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "schedule is alive"
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Download MetaCubeX rules
+        run: |
+          curl -L \
+            https://github.com/MetaCubeX/meta-rules-dat/archive/refs/heads/meta.tar.gz \
+            -o meta.tar.gz
+          tar -xzf meta.tar.gz
+
+      - name: Generate selected Shadowrocket rules
+        run: |
+          set -e
+
+          mkdir -p shadowrocket
+          SOURCE_DIR="meta-rules-dat-meta/geo-lite/geosite"
+
+          if [ ! -f lists.txt ]; then
+            echo "lists.txt not found"
+            exit 1
+          fi
+
+          while read -r name; do
+            # 跳过空行和注释
+            [ -z "$name" ] && continue
+            echo "$name" | grep -q '^#' && continue
+
+            src="$SOURCE_DIR/$name.list"
+            dst="shadowrocket/$name.list"
+
+            if [ ! -f "$src" ]; then
+              echo "Skip missing: $name.list"
+              continue
+            fi
+
+            sed 's/^+\.//g' "$src" \
+              | sed 's/^/DOMAIN-SUFFIX,/' \
+              > "$dst"
+
+            echo "Generated: $dst"
+          done < lists.txt
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add shadowrocket/*.list
+
+          git commit -m "Update selected geosite lists" || echo "No changes"
+
+          git push
