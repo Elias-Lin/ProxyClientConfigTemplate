@@ -58,7 +58,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          git add shadowrocket/*.list
+          git add shadowrocket/domain/*.list
 
           git commit -m "Update selected geosite lists" || echo "No changes"
 
