@@ -26,7 +26,7 @@ jobs:
           set -e
 
           mkdir -p shadowrocket
-          SOURCE_DIR="meta-rules-dat-meta/geo-lite/geosite"
+          SOURCE_DIR="meta-rules-dat-meta/geo/geosite"
 
           if [ ! -f lists.txt ]; then
             echo "lists.txt not found"
