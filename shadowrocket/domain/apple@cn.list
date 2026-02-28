@@ -39,6 +39,7 @@ DOMAIN-SUFFIX,xn--ohq11k7pl25iyo8a.cn
 DOMAIN-SUFFIX,amp-api-edge-lb-cn.itunes-apple.com.akadns.net
 DOMAIN-SUFFIX,amp-api-edge-lb.itunes-apple.com.akadns.net
 DOMAIN-SUFFIX,amp-api-edge.apps.apple.com
+DOMAIN-SUFFIX,amp-api-edge.music.apple.com
 DOMAIN-SUFFIX,amp-api-search-edge.apps.apple.com
 DOMAIN-SUFFIX,amp-api.apps.apple.com
 DOMAIN-SUFFIX,amp-api.music.apple.com
@@ -69,6 +70,8 @@ DOMAIN-SUFFIX,js-cdn.music.apple.com
 DOMAIN-SUFFIX,km.support.apple.com
 DOMAIN-SUFFIX,maps.apple.com
 DOMAIN-SUFFIX,misc-assets.itunes.apple.com
+DOMAIN-SUFFIX,musicstatus.music.apple.com
+DOMAIN-SUFFIX,mvod.itunes.apple.com
 DOMAIN-SUFFIX,myapp.itunes.apple.com
 DOMAIN-SUFFIX,np-edge.itunes.apple.com
 DOMAIN-SUFFIX,osxapps.itunes.apple.com
@@ -81,6 +84,7 @@ DOMAIN-SUFFIX,se2.itunes.apple.com
 DOMAIN-SUFFIX,search.itunes.apple.com
 DOMAIN-SUFFIX,sf-api-token-service.itunes.apple.com
 DOMAIN-SUFFIX,sp.itunes.apple.com
+DOMAIN-SUFFIX,speedysub.music.apple.com
 DOMAIN-SUFFIX,streamingaudio.itunes.apple.com
 DOMAIN-SUFFIX,su.itunes.apple.com
 DOMAIN-SUFFIX,sync.itunes.apple.com
@@ -251,6 +255,13 @@ DOMAIN-SUFFIX,weatherkit.apple.com
 DOMAIN-SUFFIX,www.apple.com
 DOMAIN-SUFFIX,www.apple.com.edgekey.net.globalredir.akadns.net
 DOMAIN-SUFFIX,xp.apple.com
+DOMAIN-SUFFIX,beats1.cn
+DOMAIN-SUFFIX,beats1.com.cn
+DOMAIN-SUFFIX,beats2.com.cn
+DOMAIN-SUFFIX,beats4.cn
+DOMAIN-SUFFIX,beatsbydre.com
+DOMAIN-SUFFIX,beatsbydre.com.cn
+DOMAIN-SUFFIX,beatsep.cn
 DOMAIN-SUFFIX,apple-icloud.cn
 DOMAIN-SUFFIX,appleicloud.cn
 DOMAIN-SUFFIX,icloud-apple.cn
@@ -276,10 +287,3 @@ DOMAIN-SUFFIX,ocsp2-lb.apple.com.akadns.net
 DOMAIN-SUFFIX,ocsp2.apple.com
 DOMAIN-SUFFIX,valid.apple.com
 DOMAIN-SUFFIX,valid.origin-apple.com.akadns.net
-DOMAIN-SUFFIX,beats1.cn
-DOMAIN-SUFFIX,beats1.com.cn
-DOMAIN-SUFFIX,beats2.com.cn
-DOMAIN-SUFFIX,beats4.cn
-DOMAIN-SUFFIX,beatsbydre.com
-DOMAIN-SUFFIX,beatsbydre.com.cn
-DOMAIN-SUFFIX,beatsep.cn
