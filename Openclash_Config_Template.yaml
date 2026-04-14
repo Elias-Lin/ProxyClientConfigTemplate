@@ -130,6 +130,7 @@ proxy-groups:
   - {name: 📲 Telegram, type: select, proxies: [🚀 节点选择,🇹🇼🔀 台湾故转, 🇭🇰🔀 香港故转, 🇯🇵🔀 日本故转, 🇸🇬🔀 狮城故转, 🇺🇸🔀 美国故转, ♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇹🇼 台湾节点, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
   - {name: 🎥 NETFLIX, type: select, proxies: [🚀 节点选择,🇹🇼🔀 台湾故转, 🇸🇬🔀 狮城故转, 🇭🇰🔀 香港故转, 🇯🇵🔀 日本故转, 🇺🇸🔀 美国故转, ♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇹🇼 台湾节点, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
   - {name: 💶 PayPal, type: select, proxies: [🚀 节点选择,🇹🇼🔀 台湾故转, 🇯🇵🔀 日本故转, 🇭🇰🔀 香港故转, 🇸🇬🔀 狮城故转, 🇺🇸🔀 美国故转, ♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇹🇼 台湾节点, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
+  - {name: 🛄 PikPak, type: select, proxies: [🚀 节点选择,🇹🇼🔀 台湾故转, 🇯🇵🔀 日本故转, 🇭🇰🔀 香港故转, 🇸🇬🔀 狮城故转, 🇺🇸🔀 美国故转, ♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇹🇼 台湾节点, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
   - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 节点选择,🇹🇼🔀 台湾故转, 🇭🇰🔀 香港故转, 🇯🇵🔀 日本故转, 🇸🇬🔀 狮城故转, 🇺🇸🔀 美国故转, ♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 狮城自动, ♻️ 美国自动, ♻️ 自动选择, 🇹🇼 台湾节点, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇸🇬 狮城节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
   - {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "(?i)港|hk|hongkong|hong kong"}
   - {name: 🇹🇼 台湾节点, type: select, include-all: true, filter: "(?i)台|tw|taiwan"}
@@ -160,7 +161,6 @@ rules:
   - RULE-SET,apple_ip,直连
   - RULE-SET,cn_domain,直连
   - RULE-SET,cn_ip,直连
-  - RULE-SET,proxylite,🚀 节点选择
   - RULE-SET,ai,🤖 AI_Group
   - RULE-SET,github_domain,👨🏿‍💻 GitHub
   - RULE-SET,youtube_domain,📹 YouTube
@@ -174,6 +174,7 @@ rules:
   - RULE-SET,paypal_domain,💶 PayPal
   - RULE-SET,netflix_ip,🎥 NETFLIX
   - RULE-SET,telegram_ip,📲 Telegram
+  - RULE-SET,pikpak_domain,🛄 PikPak
   - RULE-SET,geolocation-!cn,🚀 节点选择
   - DOMAIN-SUFFIX,qichiyu.com,🚀 节点选择
   - MATCH,🐟 漏网之鱼
@@ -186,9 +187,9 @@ rule-anchor:
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
 rule-providers: 
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
-  proxylite: { <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/proxy.list"}
-  custom_Domain_direct: { <<: *class, url: "https://raw.githubusercontent.com/Elias-Lin/ClashProfile/refs/heads/main/Direct.list"}
-  custom_Domain_proxy: { <<: *class, url: "https://raw.githubusercontent.com/Elias-Lin/ClashProfile/refs/heads/main/ProxyLite.list"}
+  custom_Domain_direct: { <<: *class, url: "https://raw.githubusercontent.com/Elias-Lin/ProxyClientConfigTemplate/refs/heads/main/custom_Domain_direct.list"}
+  custom_Domain_proxy: { <<: *class, url: "https://raw.githubusercontent.com/Elias-Lin/ProxyClientConfigTemplate/refs/heads/main/custom_Domain_proxy.list"}
+  pikpak_domain: { <<: *class, url: "https://raw.githubusercontent.com/Elias-Lin/ProxyClientConfigTemplate/refs/heads/main/shadowrocket/domain/pikpak.list"}
   ai: {  <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs" }
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
