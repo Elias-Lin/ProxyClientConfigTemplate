@@ -27,6 +27,7 @@ bind-address: "*"
 ipv6: false
 unified-delay: true
 tcp-concurrent: true
+geodata-mode: true  #使用本地的GEO数据，判断域名国内还是国外
 # interface-name: enp6s18
 log-level: warning
 find-process-mode: 'off'
