@@ -82,7 +82,6 @@ dns:
   ipv6: false
   enhanced-mode: fake-ip
   respect-rules: true
-  use-hosts: true
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter-mode: blacklist
   fake-ip-filter:
@@ -108,31 +107,54 @@ dns:
 
   # 国内直连优先的基础DNS（快速响应）
   default-nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
+    - 223.5.5.5  #阿里DNS服务器
+    - 119.29.29.29 #腾讯DNS服务器
 
-  # 代理下使用的主DNS（防劫持）
+  # 国内直连域名
   nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-    - https://1.1.1.1/dns-query
-    - https://dns.google/dns-query
-  
+    - 223.5.5.5  #阿里DNS服务器
+    - 119.29.29.29 #腾讯DNS服务器
+    - 180.76.76.76 #Baidu DNS服务器
+    - 114.114.114.114 # 114 DNS服务器
+    
+  # 国外/代理域名 走这个（防污染、隐私安全）
+  nameserver-policy:
+    "geosite:geolocation-!cn":
+      - https://dns.cloudflare.com/dns-query  #Cloudflare
+      - https://dns.google/dns-query       #Google
+      - https://dns.quad9.net/dns-query     #Quad9
+      - https://doh.opendns.com/dns-query    #OpenDNS
+      - tls://1.1.1.1
+      - tls://8.8.8.8
+    #"se114.org":
+    #  - 1.1.1.1
+  # 代理节点域名解析（必须国外无污染DNS）
   proxy-server-nameserver:
-    - 223.5.5.5
-    - 119.29.29.29  
+    - https://dns.cloudflare.com/dns-query
+    - https://dns.google/dns-query
 
   # fallback：当主DNS无法正确返回时，使用这些
   fallback:
     - https://dns.cloudflare.com/dns-query
+    - 1.1.1.1
+    - 8.8.8.8
     - https://doh.opendns.com/dns-query
 
   fallback-filter:
     geoip: true
     geoip-code: CN
     ipcidr:
-      - 240.0.0.0/4
- 
+      - 0.0.0.0/8      # 排除 0.0.0.0/8 网段
+      - 10.0.0.0/8     # 排除私有地址
+      - 127.0.0.0/8    # 排除本地回环
+      - 169.254.0.0/16  # 排除链路本地
+      - 172.16.0.0/12   # 排除私有地址
+      - 192.168.0.0/16  # 排除私有地址
+      - 224.0.0.0/4    # 排除组播地址
+      - 240.0.0.0/4    # 排除保留地址
+      - 255.255.255.255/32
+
+      
 # 出站策略，根据自己情况调整每个策略里分组排序，增删都可以，比如把美国自动放到第一个，比如删除香港故转，注意别漏掉表情逗号等。
 # 如果相应分组没有筛选到对应的国家，请根据自己节点名字调整筛选关键字。
 # 没有再使用锚点，是考虑很多新手修改难度，这样新手修改某个分组更容易些。
