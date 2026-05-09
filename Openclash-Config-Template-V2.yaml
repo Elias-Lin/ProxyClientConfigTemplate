@@ -212,7 +212,6 @@ rules:
   - RULE-SET,telegram_ip,📲 Telegram
   - RULE-SET,pikpak_domain,🛄 PikPak
   - RULE-SET,geolocation-!cn,🚀 节点选择
-  - DOMAIN-SUFFIX,qichiyu.com,🚀 节点选择
   - MATCH,🐟 漏网之鱼
 
 # 规则集
