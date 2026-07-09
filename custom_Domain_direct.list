@@ -1,3 +1,6 @@
+#工作相关的
+DOMAIN-SUFFIX,zpath.vip #zscaler
+DOMAIN-SUFFIX,zscaler.net #zscaler
 #证书服务
 DOMAIN-SUFFIX,letsencrypt.org
 DOMAIN-SUFFIX,zerossl.com
