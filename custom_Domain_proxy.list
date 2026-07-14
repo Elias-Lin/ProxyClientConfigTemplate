@@ -2,7 +2,11 @@
 
 # 域名后缀匹配
 DOMAIN-SUFFIX,qichiyu.com
+
+
+# AV域名后缀匹配
 DOMAIN-SUFFIX,sifangclub.com
+DOMAIN-SUFFIX,seju.life
 
 # 域名关键字匹配
 DOMAIN-KEYWORD,1e100
