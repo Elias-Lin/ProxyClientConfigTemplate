@@ -75,81 +75,46 @@ tun:
   auto-redirect: false
   auto-detect-interface: false
 
-# DNS模块
+# DNS模块（国内直连防泄露分流版）
 dns:
   enable: true
   listen: 0.0.0.0:1053
   ipv6: false
   enhanced-mode: fake-ip
-  respect-rules: false
+  respect-rules: true
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://dns.google/dns-query
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter-mode: blacklist
   fake-ip-filter:
-    - "*.lan"
-    - "*.local"
-    - "+.localdomain"
-    - "localhost.ptlogin2.qq.com"
+    - "rule-set:private_domain,cn_domain"
     - "+.msftconnecttest.com"
     - "+.msftncsi.com"
     - "time.*.com"
-    - "+.ntp.org.cn"
-    - "+.pool.ntp.org"
-    - "+.taobao.com"
-    - "+.tmall.com"
-    - "+.alipay.com"
-    - "+.alicdn.com"
-    - "+.taobaocdn.com"
-    - "+.tbcdn.cn"
-    - "+.alipayobjects.com"
-    - "+.alibabausercontent.com"
-    - "+.aliapp.org"
     - "+.market.xiaomi.com"
 
-  # 国内直连优先的基础DNS（快速响应）
+  # 引导 DNS（用于解析 DoH 域名的纯 IP）
   default-nameserver:
-    - 223.5.5.5  #阿里DNS服务器
-    - 119.29.29.29 #腾讯DNS服务器
+    - 223.5.5.5
+    - 119.29.29.29
 
-  # 国内直连域名
+  # 默认主 DNS（国内网站/直连流量会直接通过这些国内高速 DNS 解析，保证银行 App 和国内网站速度）
   nameserver:
-    - 223.5.5.5  #阿里DNS服务器
-    - 119.29.29.29 #腾讯DNS服务器
-    
-  # 国外/代理域名 走这个（防污染、隐私安全）
-  nameserver-policy:
-    "geosite:geolocation-!cn":
-      - https://1.1.1.1/dns-query  #Cloudflare
-      - https://8.8.8.8/dns-query       #Google
-      - tls://1.1.1.1
-      - tls://8.8.8.8
-    #"se114.org":
-    #  - 1.1.1.1
-  # 代理节点域名解析（必须国外无污染DNS）
-  proxy-server-nameserver:
-    - tls://1.0.0.1
-    - tls://8.8.8.8
-    - https://1.1.1.1/dns-query
+    - https://dns.alidns.com/dns-query
+    - https://dns.google/dns-query
 
-  # fallback：当主DNS无法正确返回时，使用这些
+  # 匹配到代理规则的国外流量/漏网之鱼，强制走这些海外加密 DNS
   fallback:
-    - https://dns.cloudflare.com/dns-query
-    - 1.1.1.1
-    - 8.8.8.8
-    - https://doh.opendns.com/dns-query
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
 
   fallback-filter:
     geoip: true
     geoip-code: CN
     ipcidr:
-      - 0.0.0.0/8      # 排除 0.0.0.0/8 网段
-      - 10.0.0.0/8     # 排除私有地址
-      - 127.0.0.0/8    # 排除本地回环
-      - 169.254.0.0/16  # 排除链路本地
-      - 172.16.0.0/12   # 排除私有地址
-      - 192.168.0.0/16  # 排除私有地址
-      - 224.0.0.0/4    # 排除组播地址
-      - 240.0.0.0/4    # 排除保留地址
-      - 255.255.255.255/32
+      - 240.0.0.0/4
+      - 127.0.0.0/8
       
 # 出站策略，根据自己情况调整每个策略里分组排序，增删都可以，比如把美国自动放到第一个，比如删除香港故转，注意别漏掉表情逗号等。
 # 如果相应分组没有筛选到对应的国家，请根据自己节点名字调整筛选关键字。
