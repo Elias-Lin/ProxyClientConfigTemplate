@@ -75,14 +75,17 @@ tun:
   auto-redirect: false
   auto-detect-interface: false
 
-# DNS模块
+# DNS模块（国内直连防泄露分流版）
 dns:
   enable: true
   listen: 0.0.0.0:1053
   ipv6: false
   enhanced-mode: fake-ip
   respect-rules: true
-  fake-ip-range: 28.0.0.1/8
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://dns.google/dns-query
+  fake-ip-range: 198.18.0.1/16
   fake-ip-filter-mode: blacklist
   fake-ip-filter:
     - "rule-set:private_domain,cn_domain"
@@ -91,30 +94,27 @@ dns:
     - "time.*.com"
     - "+.market.xiaomi.com"
 
-  # 国内直连优先的基础DNS（快速响应）
+  # 引导 DNS（用于解析 DoH 域名的纯 IP）
   default-nameserver:
     - 223.5.5.5
     - 119.29.29.29
 
-  # 代理下使用的主DNS（防劫持）
+  # 默认主 DNS（国内网站/直连流量会直接通过这些国内高速 DNS 解析，保证银行 App 和国内网站速度）
   nameserver:
-    - https://1.1.1.1/dns-query
+    - https://dns.alidns.com/dns-query
     - https://dns.google/dns-query
-    - 223.5.5.5
-    - 119.29.29.29
 
-  # fallback：当主DNS无法正确返回时，使用这些
+  # 匹配到代理规则的国外流量/漏网之鱼，强制走这些海外加密 DNS
   fallback:
-    - https://dns.cloudflare.com/dns-query
-    - https://doh.opendns.com/dns-query
-    - 8.8.8.8
-    - 1.1.1.1
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
 
   fallback-filter:
     geoip: true
     geoip-code: CN
     ipcidr:
       - 240.0.0.0/4
+      - 127.0.0.0/8
  
 # 出站策略，根据自己情况调整每个策略里分组排序，增删都可以，比如把美国自动放到第一个，比如删除香港故转，注意别漏掉表情逗号等。
 # 如果相应分组没有筛选到对应的国家，请根据自己节点名字调整筛选关键字。
